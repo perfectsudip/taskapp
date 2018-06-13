@@ -1,0 +1,13 @@
+<form #taskForm="ngForm" (submit)="update()">
+  <div> <label> Story Number </label> <input type="text" name="storyNumber"  [(ngModel)]="tasklog.storyNumber" #storyNumber="ngModel" >
+  </div>
+  <div> <label> Project  Task </label> <input type="text" name="projecttask"  [(ngModel)]="tasklog.projecttask" #projecttask="ngModel" >
+  </div>
+  <div> <label> Task Detail </label> <textarea name="taskDetail"  [(ngModel)]="tasklog.taskDetail" #taskDetail="ngModel" ></textarea>
+  </div>
+  <div> <label> Date Post </label> <input type="text" placeholder="dd/mm/yyyy" name="datePoste"  [(ngModel)]="tasklog.datePoste" #username="ngModel" >
+  </div>
+  <div> <label> Hours </label> <input type="text" name="hours"  [(ngModel)]="tasklog.hours" #hours="ngModel" >
+  </div>
+  <button type="submit" >Update</button>
+ </form>

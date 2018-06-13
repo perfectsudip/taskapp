@@ -47,10 +47,10 @@ public class TaskLogController {
     }
 
     /*
-    Get a Tasklog object As per tasklog id.
-    @PathVariable       indicates variable sent along  the api  url
-    @param id           id of the tasklog
-    @return             tasklog object that matches the @param id
+    * Get a Tasklog object As per tasklog id.
+     *@PathVariable       indicates variable sent along  the api  url
+     *@param id           id of the tasklog
+     *@return             tasklog object that matches the @param id
      */
     @RequestMapping(value = "/getById/{id}" ,method = RequestMethod.GET)
     public TaskLog getTaskLogById(@PathVariable Integer id){

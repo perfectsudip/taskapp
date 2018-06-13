@@ -1,46 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="warn">
+<Configuration>
 
-    <CustomLevels>
-        <CustomLevel name="DIAG" intLevel="350" />
-        <CustomLevel name="NOTICE" intLevel="450" />
-        <CustomLevel name="VERBOSE" intLevel="550" />
-    </CustomLevels>
+    <!--<CustomLevels>-->
+        <!--<CustomLevel name="DIAG" intLevel="350" />-->
 
-    <Appenders>
-        <!-- Console Appender -->
-        <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n" />
-        </Console>
-        <!-- File Appender -->
-        <File name="File" fileName="d:/app.log">
-            <PatternLayout pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n" />
-        </File>
+    <!--</CustomLevels>-->
 
-    </Appenders>
+    <!--<Appenders>-->
+        <!--<Console name="Console" target="SYSTEM_OUT">-->
+            <!--<PatternLayout pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n" />-->
+        <!--</Console>-->
 
-    <Loggers>
-        <Root level="trace">
-        <!-- Log everything in custom package -->
-        <AppenderRef ref="Console" level="debug"/>
-        <AppenderRef ref="File" level="debug" />
+        <!--<File name="File" fileName="d:/app.log">-->
+            <!--<PatternLayout pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n" />-->
+        <!--</File>-->
 
-        <AppenderRef ref="Console" level="diag" />
+    <!--</Appenders>-->
 
-        </Root>
-    </Loggers>
+    <!--<Loggers>-->
+        <!--<Root>-->
+            <!--<Logger name="com.sudip.taskapp" level="debug" additivity="false">-->
+                <!--<AppenderRef ref="Console" />-->
+            <!--</Logger>-->
+        <!--<AppenderRef ref="File" level="debug" />-->
 
-        <!--&lt;!&ndash; Log everything in Spring Boot &ndash;&gt;-->
-        <!--<Logger name="org.springframework.boot" level="debug" additivity="false">-->
-            <!--<AppenderRef ref="Console" />-->
-            <!--<AppenderRef ref="File" />-->
-        <!--</Logger>-->
+        <!--<AppenderRef ref="File" level="diag" />-->
 
-        <!--&lt;!&ndash; Log everything in Spring Core &ndash;&gt;-->
-        <!--<Logger name="org.springframework.core" level="debug" additivity="false">-->
-            <!--<AppenderRef ref="Console" />-->
-            <!--<AppenderRef ref="File" />-->
-        <!--</Logger>-->
+        <!--</Root>-->
+    <!--</Loggers>-->
+
+
 
 
 

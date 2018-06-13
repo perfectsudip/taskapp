@@ -1,0 +1,53 @@
+<form #taskForm="ngForm" (submit)="addTask()">
+ <div> <label> Story Number </label> <input type="text" name="storyNumber"  [(ngModel)]="tasklog.storyNumber" #storyNumber="ngModel" >
+ </div>
+ <div> <label> Project  Task </label> <input type="text" name="projectTask"  [(ngModel)]="tasklog.projectTask" #projecttask="ngModel" >
+ </div>
+ <div> <label> Task Detail </label> <textarea name="taskDetail"  [(ngModel)]="tasklog.taskDetail" #taskDetail="ngModel" ></textarea>
+ </div>
+ <div> <label> Date Post </label> <input type="text"  placeholder= "dd/mm/yyyy"name="datePost"  [(ngModel)]="tasklog.datePost" #username="ngModel" >
+ </div>
+ <div> <label> Hours </label> <input type="text" name="hours"  [(ngModel)]="tasklog.hours" #hours="ngModel" >
+ </div>
+ <button type="submit" >Submit</button>
+</form>
+
+
+
+<div class="card-body table-responsive">
+    <div>
+      <ngx-datatable #table
+      class="bootstrap"
+      [rows]="rows"
+      [loadingIndicator]="loadingIndicator"
+      [columns]="columns"
+      [columnMode]="'force'"
+      [headerHeight]="40"
+      [footerHeight]="40"
+      [limit]="10"
+      [rowHeight]="'auto'"
+      [reorderable]="reorderable"
+      >
+      <ngx-datatable-column name ="S.N">
+          <ng-template let-rowIndex="rowIndex"  ngx-datatable-cell-template>
+              {{rowIndex+1}}
+          </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name ="Story Number"></ngx-datatable-column>
+      <ngx-datatable-column name ="Project Task"></ngx-datatable-column>
+      <ngx-datatable-column name ="Task Detail"> </ngx-datatable-column>
+      <ngx-datatable-column name ="Date Poste"></ngx-datatable-column>
+      <ngx-datatable-column name ="Hours"> </ngx-datatable-column>
+
+      <ngx-datatable-column name ="Action" prop="id" [sortable]="false">
+        <ng-template let-rowIndex="rowIndex" let-id="id" let-value="value" ngx-datatable-cell-template>
+          
+            <i  (click)="navigate(value)">edit</i>
+           
+
+        </ng-template>
+    </ngx-datatable-column>
+      </ngx-datatable>
+      </div>
+      </div>
+      
