@@ -8,12 +8,10 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotNull
     private String userName;
     private String password;
     private String firstName;
@@ -22,7 +20,7 @@ public class User {
     public User() {
     }
 
-    public User(int id, @NotNull String userName, String password, String firstName, String lastName) {
+    public User(int id, String userName, String password, String firstName, String lastName) {
         this.id = id;
         this.userName = userName;
         this.password = password;

@@ -2,27 +2,22 @@ package com.sudip.taskapp.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
-
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-
 public class TaskLog {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-   private int id;
+    private int id;
     private int storyNumber;
-    private  String projectTask;
-    private  String taskDetail;
+    private String projectTask;
+    private String taskDetail;
     private Date datePost;
- private   int hours;
-    @OneToOne
+    private int hours;
+    @ManyToOne
     User user;
 
     public TaskLog(int id, int storyNumber, String projectTask, String taskDetail, Date datePost, int hours, User user) {
@@ -78,6 +73,7 @@ public class TaskLog {
         this.taskDetail = taskDetail;
     }
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     public Date getDatePost() {
         return datePost;
     }

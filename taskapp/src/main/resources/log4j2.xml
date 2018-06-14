@@ -19,10 +19,15 @@
 
     <Loggers>
 
-        <Logger name="com.sudip.taskapp" level="debug" additivity="false">
+        <Logger name="com.sudip.taskapp" additivity="false">
             <!--<AppenderRef ref="Console" />-->
-            <AppenderRef ref="File" />
+            <AppenderRef ref="File" level="error" />
         </Logger>
+
+        <Root level="error">
+
+            <AppenderRef ref="File" />
+        </Root>
 
     </Loggers>
 </Configuration>

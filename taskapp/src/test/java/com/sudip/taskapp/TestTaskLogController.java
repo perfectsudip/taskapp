@@ -1,14 +1,11 @@
 package com.sudip.taskapp;
 
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sudip.taskapp.controller.TaskLogController;
-import com.sudip.taskapp.controller.UserController;
 import com.sudip.taskapp.model.TaskLog;
 import com.sudip.taskapp.model.User;
 import com.sudip.taskapp.repository.TaskLogRepository;
-import com.sudip.taskapp.repository.UserRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,6 +28,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestTaskLogController {
@@ -58,8 +56,8 @@ public class TestTaskLogController {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        mapper= new ObjectMapper();
-        tl=new TaskLog(2, 200, "login", "done", d, 3, user);
+        mapper = new ObjectMapper();
+        tl = new TaskLog(2, 200, "login", "done", d, 3, user);
         taskLog = Arrays.asList(new TaskLog(1, 200, "login", "done", d, 3, user));
     }
 
@@ -69,19 +67,18 @@ public class TestTaskLogController {
         mockMvc.perform(get("/task/list"))
                 .andExpect(jsonPath("$", hasSize(1))).andExpect(jsonPath("$[0].projecttask", is("login")));
     }
-    @Test
-    public void testSavetask() throws Exception {
-        when(taskLogRepository.save(tl)).thenReturn(tl);
-        mockMvc.perform(post("/task/save")
-                .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON)
-                .content(mapper.writeValueAsString(tl))).andExpect(jsonPath("$.id",is(2)));
 
+    @Test
+    public void testSaveTest() throws Exception {
+        when(taskLogRepository.save(tl)).thenReturn(new TaskLog(2, 200, "login", "done", d, 3, user));
+        mockMvc.perform(post("/task/save").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON).
+                content(mapper.writeValueAsString(tl))).andExpect(status().isOk()).andExpect(jsonPath("$",hasSize(1)));
     }
 
     @Test
     public void testGetById() throws Exception {
         when(taskLogRepository.getOne(2)).thenReturn(tl);
-        mockMvc.perform(get("/task/getById/{id}",2))
-                .andExpect(jsonPath("$.id",is(2)));
+        mockMvc.perform(get("/task/getById/{id}", 2))
+                .andExpect(jsonPath("$.id", is(2)));
     }
 }

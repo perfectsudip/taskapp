@@ -6,6 +6,8 @@ import com.sudip.taskapp.repository.TaskLogRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,9 +30,9 @@ public class TaskLogController {
      * */
 
     @RequestMapping(value = "/list" ,method = RequestMethod.GET)
-    public List<TaskLog> getAllTaskLog(){
+    public ResponseEntity<List<TaskLog>> getAllTaskLog(){
         logger.info("tasklogRepo: findAll() : START");
-        return   taskLogRepository.findAll();
+        return  new ResponseEntity<List<TaskLog>>(taskLogRepository.findAll(),HttpStatus.OK);
 
     }
 
@@ -41,9 +43,11 @@ public class TaskLogController {
      * */
 
     @RequestMapping(value = "/save" ,method = RequestMethod.POST)
-    public TaskLog saveTaskLog(@RequestBody TaskLog taskLog){
+    public ResponseEntity<TaskLog> saveTaskLog(@RequestBody TaskLog taskLog){
         logger.info("TaskLogController: saveTaskLog() : save() ");
-        return taskLogRepository.save(taskLog);
+
+
+        return new ResponseEntity<TaskLog>(taskLogRepository.save(taskLog),HttpStatus.OK);
 
     }
 
