@@ -6,23 +6,22 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
-import java.util.Objects;
 
 @Entity
+
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 
 public class TaskLog {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
-    int storyNumber;
-    String projectTask;
-    String taskDetail;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
-    Date datePost;
-    int hours;
+   private int id;
+    private int storyNumber;
+    private  String projectTask;
+    private  String taskDetail;
+    private Date datePost;
+ private   int hours;
     @OneToOne
     User user;
 
@@ -95,17 +94,5 @@ public class TaskLog {
         this.hours = hours;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TaskLog taskLog = (TaskLog) o;
-        return id == taskLog.id;
-    }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id);
-    }
 }

@@ -1,37 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
 
-    <!--<CustomLevels>-->
-        <!--<CustomLevel name="DIAG" intLevel="350" />-->
+    <CustomLevels>
+        <CustomLevel name="DIAG" intLevel="350" />
 
-    <!--</CustomLevels>-->
+    </CustomLevels>
 
-    <!--<Appenders>-->
+    <Appenders>
         <!--<Console name="Console" target="SYSTEM_OUT">-->
             <!--<PatternLayout pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n" />-->
         <!--</Console>-->
 
-        <!--<File name="File" fileName="d:/app.log">-->
-            <!--<PatternLayout pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n" />-->
-        <!--</File>-->
+        <File name="File" fileName="d:/app.log">
+            <PatternLayout pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n" />
+        </File>
 
-    <!--</Appenders>-->
+    </Appenders>
 
-    <!--<Loggers>-->
-        <!--<Root>-->
-            <!--<Logger name="com.sudip.taskapp" level="debug" additivity="false">-->
-                <!--<AppenderRef ref="Console" />-->
-            <!--</Logger>-->
-        <!--<AppenderRef ref="File" level="debug" />-->
+    <Loggers>
 
-        <!--<AppenderRef ref="File" level="diag" />-->
+        <Logger name="com.sudip.taskapp" level="debug" additivity="false">
+            <!--<AppenderRef ref="Console" />-->
+            <AppenderRef ref="File" />
+        </Logger>
 
-        <!--</Root>-->
-    <!--</Loggers>-->
-
-
-
-
-
-
+    </Loggers>
 </Configuration>
